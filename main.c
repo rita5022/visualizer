@@ -261,13 +261,13 @@ int main()
 	/* Lab40 */
 	xTaskCreate(task1,
 	            (signed portCHAR *) "I'm NEW1",
-	            512 /* stack size */, NULL,
-	            tskIDLE_PRIORITY + 1, NULL);
+	            512 /* stack size*/ , NULL,
+	            tskIDLE_PRIORITY, NULL);
 
 	xTaskCreate(task2,
 	            (signed portCHAR *) "I'm NEW2",
-	            512 /* stack size */, NULL,
-	            tskIDLE_PRIORITY + 1, NULL);
+	            512 /* stack size*/ , NULL,
+	            tskIDLE_PRIORITY, NULL);
 
 
 	/* Start running the tasks. */
