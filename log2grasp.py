@@ -11,6 +11,7 @@ TRACE_BINARY_SEMAPHORE = False
 TRACE_INTERRUPT = False
 
 log = open('log', 'r')
+context_switch_time = open('context_switch_time.txt','w')
 lines = log.readlines()
 
 tasks = {}
@@ -44,6 +45,9 @@ for line in lines :
 		out_time = (float(tick) + (float(tick_reload) - float(out_minitick)) / float(tick_reload)) / 100 * 1000;
 		in_time  = (float(tick) + (float(tick_reload) - float(in_minitick))  / float(tick_reload)) / 100 * 1000;
 		
+		cost = in_time - out_time
+		context_switch_time.write("Context switch takes %f ms\n" % cost)		
+
 		event = {}
 		event['type'] = 'task out'
 		event['task'] = out_task
@@ -166,6 +170,7 @@ for line in lines :
 			events.append(event)
 			tasks[int_num]['created'] = True if dir == 'in' else False
 
+context_switch_time.close()
 log.close()
 
 grasp = open('sched.grasp', 'w')

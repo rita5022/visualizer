@@ -206,7 +206,7 @@ void task1(void * pvParameters)
 	while(1);
 }
 
-void task(void * pvParameters)
+void task2(void * pvParameters)
 {
 	while(1);
 }
